@@ -12,6 +12,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.*
 
+/**
+ * MojangAPI wrapper
+ */
 class MojangAPI {
     private val mojangService = Retrofit.Builder()
             .baseUrl("https://api.mojang.com")

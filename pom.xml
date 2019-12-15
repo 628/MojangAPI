@@ -80,6 +80,20 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <moduleName>MojangAPI</moduleName>
+                    <jdkVersion>11</jdkVersion>
+                    <reportUndocumented>false</reportUndocumented>
+                    <skipEmptyPackages>true</skipEmptyPackages>
+
+                    <sourceLinks>
+                        <link>
+                            <path>${project.basedir}/src/main/kotlin</path>
+                            <url>https://github.com/628/MojangAPI/tree/master/src/main/kotlin</url>
+                            <lineSuffix>#L</lineSuffix>
+                        </link>
+                    </sourceLinks>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>

@@ -7,8 +7,9 @@ import retrofit2.http.*
 import java.util.*
 
 interface MojangService {
-    @GET("users/profiles/minecraft/{username}?at={timestamp}")
-    fun getProfileAt(@Query("at") at: Long = System.currentTimeMillis() / 1000): Call<Player>
+    @GET("users/profiles/minecraft/{username}")
+    fun getProfileAt(@Path("username") username: String,
+                     @Query("at") at: Long = System.currentTimeMillis() / 1000): Call<Player>
 
     @GET("user/profiles/{uuid}/names")
     fun getNameHistory(@Path("uuid") uuid: UUID): Call<List<Map<String, String>>>

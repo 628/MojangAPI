@@ -5,8 +5,31 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dev.aello</groupId>
-    <artifactId>MojangAPI</artifactId>
+    <artifactId>mojangapi</artifactId>
     <version>1.0.0</version>
 
+    <name>MojangAPI</name>
+    <description>A java-wrapper for the Mojang API.</description>
+    <url>https://github.com/628/MojangAPI</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://github.com/628/MojangAPI/blob/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/628/MojangAPI.git</url>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+    </dependencies>
 
 </project>

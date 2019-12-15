@@ -88,8 +88,8 @@
 
                     <sourceLinks>
                         <link>
-                            <path>${project.basedir}/src/main/kotlin</path>
-                            <url>https://github.com/628/MojangAPI/tree/master/src/main/kotlin</url>
+                            <path>${project.basedir}/src/main/java</path>
+                            <url>https://github.com/628/MojangAPI/tree/master/src/main/java</url>
                             <lineSuffix>#L</lineSuffix>
                         </link>
                     </sourceLinks>

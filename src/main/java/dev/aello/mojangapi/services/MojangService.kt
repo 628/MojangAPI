@@ -12,7 +12,7 @@ interface MojangService {
                      @Query("at") at: Long = System.currentTimeMillis() / 1000): Call<Player>
 
     @GET("user/profiles/{uuid}/names")
-    fun getNameHistory(@Path("uuid") uuid: UUID): Call<List<Map<String, String>>>
+    fun getNameHistory(@Path("uuid") uuid: String): Call<List<Map<String, String>>>
 
     @POST("profiles/minecraft")
     fun getMultipleProfiles(@Body player: List<String>): Call<List<Player>>

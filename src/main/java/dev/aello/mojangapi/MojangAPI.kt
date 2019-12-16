@@ -77,13 +77,16 @@ class MojangAPI {
      */
     fun getPlayer(uuid: UUID): Player? {
         val profileResponse: Response<Player>
+        val nameHistory = getNameHistory(uuid)
 
-        if (getPlayer(uuid)?.name == null) {
+        if (nameHistory.isEmpty()) {
             return null
         }
 
+        val name = nameHistory[0]
+
         try {
-            profileResponse = mojangService.getProfileAt(getPlayer(uuid)!!.name)
+            profileResponse = mojangService.getProfileAt(name)
                     .execute()
                     .verify() ?: return null
         } catch (e: IOException) {
@@ -151,11 +154,13 @@ class MojangAPI {
      * @throws dev.aello.mojangapi.exceptions.ApiDownException
      * @throws dev.aello.mojangapi.exceptions.RateLimitException
      */
-    fun getNameHistory(player: Player): List<String> {
+    fun getNameHistory(uuid: UUID): List<String> {
         val nameHistoryResponse: Response<List<Map<String, String>>>
 
         try {
-            nameHistoryResponse = mojangService.getNameHistory(player.id).execute().verify() ?: return emptyList()
+            nameHistoryResponse = mojangService.getNameHistory(uuid.toString().replace("-", ""))
+                    .execute()
+                    .verify() ?: return emptyList()
         } catch (e: IOException) {
             throw ApiDownException("Could not establish a connection with the api.")
         }

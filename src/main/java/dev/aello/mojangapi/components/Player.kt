@@ -1,3 +1,5 @@
 package dev.aello.mojangapi.components
 
-data class Player(val id: MojangUUID, val name: String)
+import java.util.*
+
+data class Player(val id: UUID, val name: String)

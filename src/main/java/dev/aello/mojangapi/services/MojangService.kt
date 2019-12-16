@@ -4,7 +4,6 @@ import dev.aello.mojangapi.components.MojangStatistics
 import dev.aello.mojangapi.components.Player
 import retrofit2.Call
 import retrofit2.http.*
-import java.util.*
 
 interface MojangService {
     @GET("users/profiles/minecraft/{username}")

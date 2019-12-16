@@ -78,8 +78,12 @@ class MojangAPI {
     fun getPlayer(uuid: UUID): Player? {
         val profileResponse: Response<Player>
 
+        if (getPlayer(uuid)?.name == null) {
+            return null
+        }
+
         try {
-            profileResponse = mojangService.getProfileAt(getPlayer(uuid)?.name ?: return null)
+            profileResponse = mojangService.getProfileAt(getPlayer(uuid)!!.name)
                     .execute()
                     .verify() ?: return null
         } catch (e: IOException) {
@@ -124,8 +128,12 @@ class MojangAPI {
     fun getPlayerAt(uuid: UUID, epochSeconds: Long): Player? {
         val profileAtResponse: Response<Player>
 
+        if (getPlayer(uuid)?.name == null) {
+            return null
+        }
+
         try {
-            profileAtResponse = mojangService.getProfileAt(getPlayer(uuid)?.name ?: return null, epochSeconds)
+            profileAtResponse = mojangService.getProfileAt(getPlayer(uuid)!!.name, epochSeconds)
                     .execute()
                     .verify() ?: return null
         } catch (e: IOException) {

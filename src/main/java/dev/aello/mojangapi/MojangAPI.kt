@@ -1,5 +1,8 @@
 package dev.aello.mojangapi
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import dev.aello.mojangapi.adapters.MojangUUIDAdapter
 import dev.aello.mojangapi.components.MojangStatistics
 import dev.aello.mojangapi.components.Player
 import dev.aello.mojangapi.exceptions.ApiDownException
@@ -16,9 +19,10 @@ import java.util.*
  * MojangAPI wrapper
  */
 class MojangAPI {
+    private val uuidAdapter = GsonBuilder().registerTypeAdapter(UUID::class.java, MojangUUIDAdapter()).create()
     private val mojangService = Retrofit.Builder()
             .baseUrl("https://api.mojang.com")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(uuidAdapter))
             .build()
             .create(MojangService::class.java)
 

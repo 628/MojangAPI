@@ -16,7 +16,7 @@ class MojangUUIDAdapter : TypeAdapter<UUID>() {
 
         return UUID.fromString(rawMojangUUID
                         ?.replaceFirst(
-                                        "(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})",
+                                        "(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})".toRegex(),
                                 "$1-$2-$3-$4-$5"))
     }
 

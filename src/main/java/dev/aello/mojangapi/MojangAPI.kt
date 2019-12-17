@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dev.aello.mojangapi.adapters.MojangUUIDAdapter
 import dev.aello.mojangapi.components.MojangStatistics
+import dev.aello.mojangapi.components.NameHistory
 import dev.aello.mojangapi.components.Player
 import dev.aello.mojangapi.exceptions.ApiDownException
 import dev.aello.mojangapi.exceptions.RateLimitException
@@ -21,7 +22,7 @@ import java.util.*
 class MojangAPI {
     private val uuidAdapter = GsonBuilder().registerTypeAdapter(UUID::class.java, MojangUUIDAdapter()).create()
     private val mojangService = Retrofit.Builder()
-            .baseUrl("https://api.mojang.com")
+            .baseUrl("https://api.mojang.com/")
             .addConverterFactory(GsonConverterFactory.create(uuidAdapter))
             .build()
             .create(MojangService::class.java)
@@ -90,7 +91,7 @@ class MojangAPI {
         val name = nameHistory[0]
 
         try {
-            profileResponse = mojangService.getProfileAt(name)
+            profileResponse = mojangService.getProfileAt(name.name)
                     .execute()
                     .verify() ?: return null
         } catch (e: IOException) {
@@ -158,8 +159,8 @@ class MojangAPI {
      * @throws dev.aello.mojangapi.exceptions.ApiDownException
      * @throws dev.aello.mojangapi.exceptions.RateLimitException
      */
-    fun getNameHistory(uuid: UUID): List<String> {
-        val nameHistoryResponse: Response<List<Map<String, String>>>
+    fun getNameHistory(uuid: UUID): List<NameHistory> {
+        val nameHistoryResponse: Response<List<NameHistory>>
 
         try {
             nameHistoryResponse = mojangService.getNameHistory(uuid.toString().replace("-", ""))
@@ -173,7 +174,7 @@ class MojangAPI {
             return emptyList()
         }
 
-        return nameHistoryResponse.body()!!.flatMap { it.map { it.key to it.value } }.toMap().values.toList()
+        return nameHistoryResponse.body() ?: emptyList()
     }
 
     /**

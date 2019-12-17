@@ -28,7 +28,7 @@ class MojangAPI {
             .create(MojangService::class.java)
 
     /**
-     * Checks to ensure a connection can be made to the Mojang API (it isn't down or inoperable)
+     * Checks to ensure a connection can be made to the Mojang API (it isn't down or inoperable).
      * @return false if a connection cannot be established or if the API is down
      */
     fun connect(): Boolean {
@@ -73,7 +73,7 @@ class MojangAPI {
     }
 
     /**
-     * Get the [dev.aello.mojangapi.components.Player] object for the given UUID
+     * Get the [dev.aello.mojangapi.components.Player] object for the given UUID.
      *
      * @param uuid The UUID of the player
      * @return [dev.aello.mojangapi.components.Player] for that username at the current time or null if that user doesn't exist
@@ -102,7 +102,7 @@ class MojangAPI {
     }
 
     /**
-     * Get the [dev.aello.mojangapi.components.Player] object for the given username at a given time
+     * Get the [dev.aello.mojangapi.components.Player] object for the given username at a given time.
      *
      * @param username Username of the player
      * @param epochSeconds The time, in epoch seconds
@@ -125,7 +125,7 @@ class MojangAPI {
     }
 
     /**
-     * Get the [dev.aello.mojangapi.components.Player] object for the given UUID at a given time
+     * Get the [dev.aello.mojangapi.components.Player] object for the given UUID at a given time.
      *
      * @param uuid UUID of the player
      * @param epochSeconds The time, in epoch seconds
@@ -152,7 +152,7 @@ class MojangAPI {
     }
 
     /**
-     * Gets a list of names that the player has had
+     * Gets a list of names that the player has had in the past (including their current one).
      *
      * @param player the [dev.aello.mojangapi.components.Player]
      * @return a list of past usernames or an empty list if the request failed (the player doesn't exist)
@@ -178,7 +178,7 @@ class MojangAPI {
     }
 
     /**
-     * Get multiple players in one query
+     * Get multiple players in one query.
      *
      * @param playerNames A list of playernames
      * @return a map of the username to the Player object or an empty map if the request failed
@@ -204,7 +204,7 @@ class MojangAPI {
     }
 
     /**
-     * Get a [dev.aello.mojangapi.components.MojangStatistics]
+     * Get a [dev.aello.mojangapi.components.MojangStatistics].
      *
      * @return [dev.aello.mojangapi.components.MojangStatistics] or null if the request failed
      * @throws dev.aello.mojangapi.exceptions.ApiDownException

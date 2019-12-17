@@ -37,7 +37,7 @@ Add the dependency:
 	}
 ```
 ## Usage
-After creating the MojangAPI object, you should check the connection to ensure that the API is operational and you can connect to it:
+After creating the MojangAPI object, you should check the connection to ensure that the API is operational:
 ```
 MojangAPI api = new MojangAPI();
 
